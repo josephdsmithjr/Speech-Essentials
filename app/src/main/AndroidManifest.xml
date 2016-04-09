@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.speechessentials.speechessentials" >
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+    <uses-feature android:name="android.hardware.Camera" android:required="false" />
+    <uses-feature android:name="android.hardware.Camera.front" android:required="false" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <!-- Required permission to check licensing. -->
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+    <!-- Optional permission for reliable local dispatching on non-Google Play devices -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- Required to check whether Wi-Fi is enabled -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <supports-screens
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:anyDensity="true"
+        />
+    <application
+        android:largeHeap="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.gms.analytics.globalConfigResource"
+            android:resource="@xml/global_tracker" />
+        <!-- Optionally, register AnalyticsReceiver and AnalyticsService to support background
+         dispatching on non-Google Play devices -->
+        <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false"/>
+
+        <!-- Optionally, register CampaignTrackingReceiver and CampaignTrackingService to enable
+             installation campaign reporting -->
+        <receiver android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+        <activity
+            android:name="com.speechessentials.speechessentials.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.speechessentials.speechessentials.MenuActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden">
+        </activity>
+        <activity
+            android:name="com.speechessentials.speechessentials.NotificationView"
+            android:label="Details of notification"
+            android:parentActivityName=".MenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity"/>
+        </activity>
+        <activity
+            android:name="com.speechessentials.speechessentials.FlashCardActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="stateUnchanged|adjustPan">
+        </activity>
+        <activity
+            android:name="com.speechessentials.speechessentials.MatchingActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden">
+        </activity>
+        <activity
+            android:name="com.speechessentials.speechessentials.WordFindActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden">
+        </activity>
+        <activity
+            android:name="com.speechessentials.speechessentials.SentencesFlashCardActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden">
+        </activity>
+        <activity
+            android:name="com.speechessentials.speechessentials.SentencesWordSwapActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden">
+        </activity>
+        <activity
+            android:name="com.speechessentials.speechessentials.SoundsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden">
+        </activity>
+        <activity
+            android:name="com.speechessentials.speechessentials.StoreActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden">
+        </activity>
+        <activity
+            android:name="com.speechessentials.speechessentials.MirrorActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden">
+        </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="6a8a95d73c2c3797c7a0686ae2be8708a2245ab3" />
+    </application>
+
+</manifest>
