@@ -3322,8 +3322,13 @@ public class MenuActivity extends Activity {
 
     public void unlockPurchasedSounds(){
         String[] listOfPurchasedSounds = _fileHelper.getStringFromFile("purchasedSoundsFile", "b", this).split(",");
+        ArrayList<String> soundList = new ArrayList<>();
         for(int i = 0; i < listOfPurchasedSounds.length; i++){
-            unlockSound(listOfPurchasedSounds[i]);
+            soundList.add(listOfPurchasedSounds[i]);
+        }
+        soundList = getRidOfSpecialSounds(soundList);
+        for(int i = 0; i < soundList.size(); i++){
+            unlockSound(soundList.get(i));
         }
     }
 
@@ -3799,8 +3804,14 @@ public class MenuActivity extends Activity {
             unlockSound("all");
         } else {
             String[] listOfStringArray = listOfStrings.split(",");
-            for(int i = 0; i < listOfStringArray.length; i++) {
-                unlockSound(listOfStringArray[i]);
+            //TODO:
+            ArrayList<String> soundList = new ArrayList<>();
+            for(int i = 0; i < listOfStringArray.length; i++){
+                soundList.add(listOfStringArray[i]);
+            }
+            soundList = getRidOfSpecialSounds(soundList);
+            for(int i = 0; i < soundList.size(); i++) {
+                unlockSound(soundList.get(i));
             }
         }
     }
@@ -4088,6 +4099,42 @@ public class MenuActivity extends Activity {
                 break;
         }
         return specialSoundsList;
+    }
+
+    public ArrayList<String> getRidOfSpecialSounds(ArrayList<String> soundList){
+        soundList.remove("rl");
+        soundList.remove("air");
+        soundList.remove("ar");
+        soundList.remove("br");
+        soundList.remove("dr");
+        soundList.remove("ear");
+        soundList.remove("er");
+        soundList.remove("fr");
+        soundList.remove("gr");
+        soundList.remove("ire");
+        soundList.remove("kr");
+        soundList.remove("or");
+        soundList.remove("pr");
+        soundList.remove("tr");
+        soundList.remove("sl");
+        soundList.remove("ns");
+        soundList.remove("ps");
+        soundList.remove("sk");
+        soundList.remove("ts");
+        soundList.remove("sm");
+        soundList.remove("ks");
+        soundList.remove("sn");
+        soundList.remove("sp");
+        soundList.remove("st");
+        soundList.remove("sw");
+        soundList.remove("bl");
+        soundList.remove("fl");
+        soundList.remove("gl");
+        soundList.remove("kl");
+        soundList.remove("pl");
+        soundList.remove("rl");
+        soundList.remove("sl");
+        return soundList;
     }
 
     public boolean checkIfEnoughSpaceOnDeviceAndSetNumberOfRows(ResultSet resultSet) {
